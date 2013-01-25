@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="General_files/style.css" type="text/css">
+<script type="text/javascript" src="General_files/mchp.js"></script>
+<script language="JavaScript" src="General_files/slider.js"></script>
+
+<title>General Settings</title>
+<script>
+function FieldDisable() {
+FEn('hrs');
+FEn('min');
+FEn('sec');
+FEn('date');
+FInl('nNTP');
+}
+function FieldEnable(form) {
+FDis('hrs');
+FDis('min');
+FDis('sec');
+FDis('date');
+FHid('nNTP');
+}
+function FieldStatus(status) {
+if (status == "checked")
+	FieldDisable();
+else
+	FieldEnable();
+}
+</script>
+</head>
+<body onload="FieldStatus('');">
+<table class="ds_box" id="ds_conclass" style="display:none;" cellpadding="0" cellspacing="0">
+<tbody><tr><td id="ds_calclass">
+</td></tr>
+</tbody></table>
+<script type="text/javascript" src="General_files/calendar.js"></script>
+
+
+<div id="wrapper">
+<div id="header">
+	<div id="logo">
+	  <img src="General_files/cb_logo.gif">
+	</div>
+	<div id="header_text">
+		<h4> Zone Protector </h4>
+		<p>Model: CB-ZP-AMT9900</p> 
+	</div>
+	<div id="user_logo">
+	  <ul>
+		<li><a href="http://192.168.1.48/wStart.htm?wStart=1" class="spWiz"><br><span>Settings Wizard</span></a></li>
+		<li style="border:none;"><a href="http://192.168.1.48/index.htm?logout=1" class="spLogout"><br><br><br><span id="span_logout">Logout</span></a></li>
+	  </ul>	
+	</div>
+	<div style="clear:both;"></div>
+</div>
+
+<div id="content"><div style="background-color:#fff;">
+  
+<div id="sidebar"><div id="inner_sidebar">
+ <ul>
+	<li> <a href="http://192.168.1.48/index.htm"> Device Information </a></li>
+	<li class="main_list_bg"> <a href="http://192.168.1.48/General.htm">Device Settings</a></li>
+	<ul id="sub_menu">
+		<li class="list_bg"> <a href="http://192.168.1.48/General.htm">General Settings </a></li>
+		<li><a href="http://192.168.1.48/Network.htm">Network Settings </a></li>
+		<li><a href="http://192.168.1.48/Detect.htm">Detector Settings </a> </li>
+		<li><a href="http://192.168.1.48/Alert.htm">Alert Settings </a></li>
+		<li><a href="http://192.168.1.48/Zone.htm">Zone Manager  Settings</a> </li>
+	</ul>
+	
+	<li> <a href="http://192.168.1.48/Mainten.htm">Device Maintenance </a></li>
+ </ul>
+</div></div>
+<div id="main_content">
+<div id="text_content">
+<h1> General Settings <span style="font-size:11px; float:right; padding-top:4px;"><a href="http://192.168.1.48/General.htm" style="color:#FFFFFF; text-decoration:none;">Restore settings on this page</a></span></h1>
+<p>Enter the settings where prompted below. Click 'Save' to apply your changes or 'Back' to discard any changes. Hover over <span class="help"></span> for help.</p>
+</div>
+<div>
+<form name="general" action="" class="network_setting_form" method="get">
+<div id="inner_content"><div id="inner_form">
+<table width="95%">
+<tbody><tr>
+	<td width="150px">Device Name: </td>
+	<td colspan="4"><input name="dName" onclick="this.value='';" value="hack all the things" maxlength="48" size="52" tabindex="1" type="text"></td>
+	<td class="hp"><a href="#" onmouseover="HIn('hdName')" onmouseout="HOut('hdName')"><span class="hpblock" id="hdName"><span class="hptitle">Edit Device Name</span><span class="hpcontent"><span class="hpsection">Enter
+ a name that will describe the function or location of this device, 
+using up to 48 characters.  We suggest you choose a unique name if this 
+device is part of a system.</span></span></span></a></td>
+</tr>
+<tr>
+	<td><br>Time/Date:</td>
+	<td align="left" width="80px"><b>Hours</b><br><input style="width:30px;" size="3" maxlength="3" id="hrs" name="hrs" value="22" tabindex="2" type="text"></td>
+	<td align="left" width="80px"><b>Minutes</b><br><input style="width:30px;" size="3" maxlength="3" id="min" name="min" value="38" tabindex="3" type="text"></td>
+	<td align="left" width="80px"><b>Seconds</b><br><input style="width:30px;" size="3" maxlength="3" id="sec" name="sec" value="20" tabindex="4" type="text"></td>
+	<td>&nbsp;<br><input onclick="ds_sh(this);" id="date" name="date" value="2011/10/03" style="cursor: text" size="12" tabindex="5"></td>
+	<td class="hp"><a href="#" onmouseover="HIn('hdate')" onmouseout="HOut('hdate')"><span class="hpblock" id="hdate"><span class="hptitle">Setting the Date &amp; Time</span><span class="hpcontent"><span class="hpsection">The
+ device real-time clock can be set manually here; but it is better, if 
+your system supports it, to configure a NTP (Network Time Protocol) 
+server</span></span></span></a></td>
+</tr>
+<tr>
+	<td>NTP Server (optional): </td>
+	<td colspan="4">
+		<input name="sNTP" value="1" onclick="FieldDisable(this.form);" tabindex="6" type="radio"> On
+		<input name="sNTP" value="0" checked="checked" onclick="FieldEnable(this.form);" tabindex="7" type="radio"> Off
+	&nbsp;&nbsp;&nbsp;&nbsp;<input style="display: none;" name="nNTP" id="nNTP" value="pool.ntp.org" maxlength="30" size="30" tabindex="8" type="text"></td>
+  <td class="hp"><a href="#" onmouseover="HIn('NTP')" onmouseout="HOut('NTP')"><span class="hpblock" id="NTP"><span class="hptitle">Network Time Protocol Server</span><span class="hpcontent"><span class="hpsection">Click
+ 'On' to display the NTP server URL edit box.  A default server may be 
+suggested, but you may need to specify a different server to suit your 
+system.  Click 'Save' to save and connect to the NTP server.  If 
+successful the clock will be updated automatically.  If unsuccessful a 
+warning message will be displayed.</span></span></span></a></td>
+</tr>
+</tbody></table>
+</div></div>
+<div id="outer">
+<table width="100%">
+<tbody><tr>
+	<td class="expired" align="center" width="50%">&nbsp;</td>
+	<td class="device_status" align="center" width="50%">&nbsp;</td>
+</tr>
+<tr>
+	<td align="center" width="50%"><input class="spBack" onclick="window.location='index.htm'" type="button"></td>
+	<td align="center" width="50%"><input class="spSave" onclick="document.general.submit();" value="" tabindex="9" type="button"></td>
+</tr>
+</tbody></table>
+</div>
+</form>
+</div></div><div style="clear:both;"></div></div></div><div style="clear:both;"> </div>
+<div id="footer">
+		<p>©2007-2012 <span>Cellbusters.com</span> All rights reserved.</p>
+	</div>
+</div>
+
+
+
+</body></html>

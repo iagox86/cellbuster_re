@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="Mainten_files/style.css" type="text/css">
+<script type="text/javascript" src="Mainten_files/mchp.js"></script>
+<script language="JavaScript" src="Mainten_files/slider.js"></script>
+
+<title>Device maintenance</title>
+<script language="javascript" type="text/javascript">
+var A_TPL = {
+	'b_vertical' : false,
+	'b_watch': true,
+	'n_controlWidth': 120,
+	'n_controlHeight': 15,
+	'n_sliderWidth': 17,
+	'n_sliderHeight': 15,
+	'n_pathLeft' : 1,
+	'n_pathTop' : -20,
+	'n_pathLength' : 110,
+	's_imgControl': '',
+	's_imgSlider': 'images/selector.gif',
+	'n_zIndex': 1
+}
+var A_INIT = {
+	's_form' : 0,
+	's_name': 'Exp',
+	'n_minValue' : 0,
+	'n_maxValue' : 999,
+	'n_value' : 20,
+	'n_step' : 1
+}
+var B_INIT = {
+	's_form' : 0,
+	's_name': 'dSens',
+	'n_minValue' : 0,
+	'n_maxValue' : 255,
+	'n_value' : 20,
+	'n_step' : 1
+}
+function restoreSubmission (pForm) {
+var why = '';
+var txt;
+txt = pForm.restore_file.value;
+txt = txt.toLowerCase();
+if (txt.indexOf('backup.zip') < 0) {why += 'You must select a valid Zone Protector backup file with name "backup.zip"';}
+if (pForm.restore_file.value == '') {why += 'No settings restore source file has been specified.';}
+if (why != '') { alert(why); return false; }
+return confirm('Are sure you want to restore configuration settings from the file selected and thus overwrite any existing configuration?')
+}
+function updateSubmission (pForm) {
+var why = '';
+if (pForm.update_file.value == '') {why += 'No firmware update source file has been specified.';}
+if (why != '') { alert(why); return false; } 
+return confirm('Are sure you want to replace the firmware?\n\nAfter clicking OK to confirm the status LED on the device will flash amber to indicate file uploading - do not navigate away from this page until the upload is complete which may take some many seconds.\n\nThe Zone Protector will have to restart in order to make\n the change effective.')
+}
+</script>
+</head>
+<body onload="initFileUploads()">
+<div id="wrapper">
+<div id="header">
+	<div id="logo">
+	  <img src="Mainten_files/cb_logo.gif">
+	</div>
+	<div id="header_text">
+		<h4> Zone Protector </h4>
+		<p>Model: CB-ZP-AMT9900</p> 
+	</div>
+	<div id="user_logo">
+	  <ul>
+		<li><a href="http://192.168.1.48/wStart.htm?wStart=1" class="spWiz"><br><span>Settings Wizard</span></a></li>
+		<li style="border:none;"><a href="http://192.168.1.48/index.htm?logout=1" class="spLogout"><br><br><br><span id="span_logout">Logout</span></a></li>
+	  </ul>	
+	</div>
+	<div style="clear:both;"></div>
+</div>
+
+<div id="content"><div style="background-color:#fff; float:left">
+<div id="sidebar"><div id="inner_sidebar" style="padding-bottom:65px;">
+ <ul>
+	<li><a href="http://192.168.1.48/index.htm"> Device Information </a></li>
+	<li style="margin-left:-3px; border-left:7px solid #fff;"><a href="http://192.168.1.48/General.htm">Device Settings</a></li>
+	<li class="main_list_bg"> <a href="http://192.168.1.48/Mainten.htm">Device Maintenance </a></li>
+    <ul id="sub_menu">
+	 <li class="list_bg"> <a href="http://192.168.1.48/Mainten.htm">Software Settings </a></li>
+	 <li> <a href="http://192.168.1.48/User.htm">Security Settings </a></li>
+	 <li> <a href="http://192.168.1.48/ZoneChk.htm">Zone Check </a></li>
+	</ul>
+ </ul>
+</div><div style="clear:both;"></div></div>
+<div id="main_content">
+<div id="text_content"><h1> Device Maintenance - Software Settings</h1><p>Enter the settings where prompted or the various buttons for their actions. Hover over <a href=""> <span class="help"></span></a> for help.</p>
+</div>
+<div><div id="inner_content"><div id="inner_form">
+<table class="general_setting_form" border="0" cellspacing="4" width="97%">
+<tbody><tr>
+ <td width="300"> Backup Configuration Settings to PC: </td>
+ <td width="250px"></td>
+ <td><input class="backup" value="" name="backup" onclick="window.location.href='backup.zip'" tabindex="1" type="button"></td>
+ <td class="hp"><a href="#" onmouseover="HIn('hBackup')" onmouseout="HOut('hBackup')"><span class="hpblock" id="hBackup"><span class="hptitle">Backup configuration settings</span><span class="hpcontent"><span class="hpsection">Click
+ the button to upload a backup file (backup.zip) of the current device 
+configuration. The file will be deposited in your default download 
+folder.  It can only be 'opened' by Zone Protector and should not be 
+edited.</span></span></span></a>
+ </td>
+</tr>
+<tr>
+ <form name="restore" action="Mainten.htm" method="post" enctype="multipart/form-data" onsubmit="return restoreSubmission (this)"></form>
+ <td> Restore Configuration Settings from PC: </td>
+ <td><div class="fileinputs"><input class="file hidden" name="restore_file" tabindex="2" type="file"><div class="ff"><div class="ff1"><input></div><div class="ff2"><img class="fi" src="Mainten_files/select.gif"></div></div></div></td>
+ <td><input class="restore" value="" tabindex="3" type="submit"></td>
+ <td class="hp"><a href="#" onmouseover="HIn('hRestore')" onmouseout="HOut('hRestore')"><span class="hpblock" id="hRestore"><span class="hptitle">Restore configuration settings</span><span class="hpcontent"><span class="hpsection">You
+ can restore the configuration settings from a previously saved backup 
+file.  First click 'Select' and browse for the required file which must 
+be named 'backup.zip' but may be located in any folder.  Now click 
+'Restore' and, when prompted, click 'OK' if you are really sure.  The 
+operation will not affect any audio clips you have installed.  After 
+restoring the device must be reset to complete the process.</span></span></span></a>
+ </td>
+  
+</tr>
+<tr><td colspan="4"><hr></td></tr>
+<tr>
+ <td colspan="2"> Firmware Version: 2.15  120530</td>
+</tr>
+<tr>
+ <form name="update" action="Mainten.htm" method="post" enctype="multipart/form-data" onsubmit="return updateSubmission (this)"></form>
+ <td>Update Firmware:</td>
+ <td><div class="fileinputs"><input class="file hidden" name="update_file" tabindex="4" type="file"><div class="ff"><div class="ff1"><input></div><div class="ff2"><img class="fi" src="Mainten_files/select.gif"></div></div></div></td>
+ <td><input class="spUpdate" value="" tabindex="5" type="submit"></td>
+ <td class="hp"><a href="#" onmouseover="HIn('hUpdate')" onmouseout="HOut('hUpdate')"><span class="hpblock" id="hUpdate"><span class="hptitle">Update firmware from file</span><span class="hpcontent"><span class="hpsection">You
+ must first obtain from your supplier a valid firmware update file.  
+Click 'Select' and browse for this file.  Finally click 'Update' to 
+upload the file.  Click 'OK' when you are prompted to confirm.  The 
+device status LED will start flashing amber to indicate the file upload 
+which may take many seconds. Do not navigate away from this page until 
+the upload is complete.  When complete the device must be reset to 
+complete the process.</span></span></span></a>
+ </td>
+  
+</tr>
+<tr><td colspan="4"><hr></td></tr>
+<tr><form name="factory" action="Mainten.htm" class="device_maint" method="get"></form>
+ <td> Reset Device to Factory Defaults:</td>
+ <td colspan="2"><input name="factory" id="reset" value="0" type="hidden">
+ <input class="spFactory" onclick="if(confirm('Are sure you want to return to factory settings?\n\nAfter clicking OK the factory settings will be installed on the next device reset.  You can reset the device by clicking the Restart button below.\n\nA factory reset will not erase any existing audio clips you have installed.')) {this.form.factory.value='1'; document.factory.submit();}" name="reset" tabindex="6" type="button"></td>
+ <td class="hp"><a href="#" onmouseover="HIn('hReset')" onmouseout="HOut('hReset')"><span class="hpblock" id="hReset"><span class="hptitle">Reset to factory defaults</span><span class="hpcontent"><span class="hpsection">An
+ alternative to restoring from backup is to reinstate factory defaults. 
+ After clicking this button click 'OK' when you are prompted to confirm.
+  This operation will not affect any audio clips you have installed.  
+You must reset the device to complete the process.</span></span></span></a>
+ </td>
+</tr>
+</tbody></table>
+</div></div>
+<div id="outer">
+<table width="100%">
+<tbody><tr>
+ <td class="expired" align="center">&nbsp;</td>
+ <td class="device_status" align="center">&nbsp;</td>
+</tr>
+<tr>
+ <td align="center" width="50%"><input name="iheading" id="iheading" value="1" type="hidden">
+  <input class="spBack" onclick="window.location='index.htm'" type="button"></td>
+ <td align="center" width="50%"><input class="restart" onclick="if(confirm('Are sure you want to restart the Zone Protector device?\n\nThis will install factory settings only if you have previously clicked the Factory Reset button, otherwise the only effect will be a short pause as the device reboots.')) {window.location='index.htm?Restart=1'}" value="" type="button"></td>
+</tr>
+</tbody></table>
+</div></div></div></div></div><div style="clear:both;"></div>
+<div id="footer">
+		<p>©2007-2012 <span>Cellbusters.com</span> All rights reserved.</p>
+	</div>
+</div>
+
+
+
+</body></html>

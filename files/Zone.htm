@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="Zone_files/style.css" type="text/css">
+<script type="text/javascript" src="Zone_files/mchp.js"></script>
+<script language="JavaScript" src="Zone_files/slider.js"></script>
+
+<title>Zone Setting</title>
+<script>
+function ZMgrOn() {
+	document.getElementById('Mess').style.display="none";
+	document.getElementById('ZMgr').style.display="block";
+	document.getElementById('save').style.display="block";
+}
+function ZMgrOff() {
+	document.getElementById('Mess').style.display="block";
+	document.getElementById('ZMgr').style.display="none";
+	document.getElementById('save').style.display="none";
+}
+function FieldStatus(status) {
+	if (status == "checked")
+		ZMgrOn();
+	else
+		ZMgrOff();
+}
+</script>
+</head>
+<body onload="FieldStatus('');">
+<div id="wrapper">
+<div id="header">
+	<div id="logo">
+	  <img src="Zone_files/cb_logo.gif">
+	</div>
+	<div id="header_text">
+		<h4> Zone Protector </h4>
+		<p>Model: CB-ZP-AMT9900</p> 
+	</div>
+	<div id="user_logo">
+	  <ul>
+		<li><a href="http://192.168.1.48/wStart.htm?wStart=1" class="spWiz"><br><span>Settings Wizard</span></a></li>
+		<li style="border:none;"><a href="http://192.168.1.48/index.htm?logout=1" class="spLogout"><br><br><br><span id="span_logout">Logout</span></a></li>
+	  </ul>	
+	</div>
+	<div style="clear:both;"></div>
+</div>
+
+<div id="content"><div style="background-color:#fff;">
+<div id="sidebar"><div id="inner_sidebar">
+ <ul>
+  <li> <a href="http://192.168.1.48/index.htm"> Device Information </a></li>
+  <li class="main_list_bg"> <a href="http://192.168.1.48/General.htm">Device Settings</a></li>
+	<ul id="sub_menu">
+		<li><a href="http://192.168.1.48/General.htm">General Settings </a></li>
+		<li><a href="http://192.168.1.48/Network.htm">Network Settings </a></li>
+		<li><a href="http://192.168.1.48/Detect.htm">Detector Settings </a> </li>
+		<li><a href="http://192.168.1.48/Alert.htm">Alert Settings </a></li>
+		<li class="list_bg"> <a href="http://192.168.1.48/Zone.htm">Zone Manager  Settings</a> </li>
+	</ul>
+  
+  <li> <a href="http://192.168.1.48/Mainten.htm">Device Maintenance </a></li>
+ </ul>
+</div></div>
+<div id="main_content">
+<div id="text_content">
+<h1> Zone Manager Settings <span style="font-size:11px; float:right; padding-top:4px;"><a href="http://192.168.1.48/Zone.htm" style="color:#FFFFFF; text-decoration:none;">Restore settings on this page</a></span></h1>
+<p>Enter the settings where prompted below. Click 'Save' to apply your changes or 'Back' to discard any changes. Hover over <span class="help"></span> for help.</p>
+</div>
+<form name="zone_manager" action="" class="network_setting_form" method="get">
+<div><div id="inner_content"><div id="inner_form">
+<table style="width:500px;">
+<tbody><tr>
+ <td width="200px">Enable Zone Manager: </td>
+ <td>
+ <input name="eZMgr" value="1" onclick="ZMgrOn(this.form);" tabindex="1" type="radio"> On
+ <input name="eZMgr" value="0" checked="checked" onclick="ZMgrOff(this.form);" tabindex="2" type="radio"> Off
+ </td>
+<td class="hp" width="200px"><a href="#" onmouseover="HIn('ezmang')" onmouseout="HOut('ezmang')"><span class="hpblock" id="ezmang"><span class="hptitle">Enable Zone Manager</span><span class="hpcontent"><span class="hpsection">Only
+ when 'On' are the other Zone Manager fields visible on this page.  This
+ setting must be 'On' for the device to communicate with Zone Manager.  
+Click 'Off' to disable the connection without affecting the other 
+settings.</span></span></span></a></td>
+</tr>
+</tbody></table>
+<div id="Mess" style="display: block;">
+<br><br><br><br><br>
+<p>Zone Manager is an optional tool used to manage and monitor one or more Zone Protector devices.</p>
+</div>
+<div id="ZMgr" style="display:none;">
+<table style="width:500px;">
+<tbody><tr>
+<td width="200px">Server Address: </td>
+<td><input name="Server" value="0.0.0.0" size="32" maxlength="32" tabindex="3"></td>
+<td class="hp" width="200px"><a href="#" onmouseover="HIn('hserver')" onmouseout="HOut('hserver')"><span class="hpblock" id="hserver"><span class="hptitle">Zone Manager server address</span><span class="hpcontent"><span class="hpsection">This
+ field should display the DNS name, or IP Address in xxx.xxx.xxx.xxx 
+format, of the Zone Manager, using up to 30 characters - please refer to
+ your Zone Manager documentation.</span></span></span></a></td>
+</tr>
+<tr>
+<td>Port Number: </td>
+<td><input name="sPort" value="80" size="6" maxlength="6" tabindex="4">
+</td><td class="hp"><a href="#" onmouseover="HIn('hsPort')" onmouseout="HOut('hsPort')"><span class="hpblock" id="hsPort"><span class="hptitle">Zone Manager server port number</span><span class="hpcontent"><span class="hpsection">This field should display the Port Number of the Zone Manager - please refer to your Zone Manager documentation.</span></span></span></a></td>
+</tr>
+<tr>
+<td>License Expiry Date: </td>
+
+<td>2000/00/00</td>
+</tr>
+<tr>
+ <td>License Owner Details: </td>
+ <td class="readonly">(none)</td>
+</tr>
+</tbody></table>
+</div></div></div>
+<div id="outer">
+<table width="100%">
+<tbody><tr>
+ <td class="expired" align="center">&nbsp;</td>
+ <td class="device_status" align="center">&nbsp;</td>
+</tr>
+<tr>
+ <td align="center" width="50%"><input class="spBack" onclick="window.location='index.htm'" type="button"></td>
+ <td align="center" width="50%"><input style="display: none;" id="save" class="spSave" onclick="document.zone_manager.submit();" value="" tabindex="3" type="button"></td>
+</tr>
+</tbody></table>
+</div>
+
+</div></form></div><div style="clear:both;"></div></div></div><div style="clear:both;"></div>
+<div id="footer">
+		<p>©2007-2012 <span>Cellbusters.com</span> All rights reserved.</p>
+	</div>
+</div>
+
+
+
+</body></html>

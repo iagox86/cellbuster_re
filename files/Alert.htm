@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="Alert_files/style.css" type="text/css">
+<script type="text/javascript" src="Alert_files/mchp.js"></script>
+<script language="JavaScript" src="Alert_files/slider.js"></script>
+
+<title>Alert Settings</title>
+<script language="javascript" type="text/javascript">
+var input = unescape(location.search);
+var patt1=/aErase=1/gi;
+var res = input.match(patt1);
+if (res != null) {
+	input = input.replace(/aErase=1/i, "aErase=");
+	location.search = input;
+}
+
+function addSubmission (pForm) {
+if (pForm.addfile.value == '') {alert('No audio source file has been specified.'); return false;}
+return confirm('Are sure you want to upload this audio file?\n\nAfter clicking OK to confirm the device status LED will start flashing amber to indicate file uploading - do not navigate away from this page until the upload is complete which may take many seconds.');}
+</script>
+<script language="javascript" type="text/javascript">
+var A_TPL = {
+	'b_vertical' : false,
+	'b_watch': true,
+	'n_controlWidth': 120,
+	'n_controlHeight': 15,
+	'n_sliderWidth': 17,
+	'n_sliderHeight': 15,
+	'n_pathLeft' : 1,
+	'n_pathTop' : 0,
+	'n_pathLength' : 110,
+	's_imgControl': 'images/bg1.gif',
+	's_imgSlider': 'images/selector.gif',
+	'n_zIndex': 1,
+	's_form' : 0,
+	'n_minValue' : 0,
+	'n_step' : 1
+}
+var A_INIT = {
+	's_name': 'Vol0',
+	'n_maxValue' : 255,
+	'n_value' : 255
+}
+var B_INIT = {
+	's_name': 'Vol1',
+	'n_maxValue' : 255,
+	'n_value' : 192
+}
+var C_INIT = {
+	's_name': 'Vol2',
+	'n_maxValue' : 255,
+	'n_value' : 129
+}
+var D_INIT = {
+	's_name': 'Vol3',
+	'n_maxValue' : 255,
+	'n_value' : 64
+}
+</script>
+</head>
+<body onload="initFileUploads()">
+<div id="wrapper">
+<div id="header">
+	<div id="logo">
+	  <img src="Alert_files/cb_logo.gif">
+	</div>
+	<div id="header_text">
+		<h4> Zone Protector </h4>
+		<p>Model: CB-ZP-AMT9900</p> 
+	</div>
+	<div id="user_logo">
+	  <ul>
+		<li><a href="http://192.168.1.48/wStart.htm?wStart=1" class="spWiz"><br><span>Settings Wizard</span></a></li>
+		<li style="border:none;"><a href="http://192.168.1.48/index.htm?logout=1" class="spLogout"><br><br><br><span id="span_logout">Logout</span></a></li>
+	  </ul>	
+	</div>
+	<div style="clear:both;"></div>
+</div>
+
+<div id="content"><div style="background-color:#fff; float:left">
+<div id="sidebar"><div id="inner_sidebar">
+ <ul>
+  <li> <a href="http://192.168.1.48/index.htm"> Device Information </a></li>
+  <li class="main_list_bg"> <a href="http://192.168.1.48/General.htm">Device Settings</a></li>
+  <ul id="sub_menu">
+	<li><a href="http://192.168.1.48/General.htm">General Settings</a></li>
+	<li><a href="http://192.168.1.48/Network.htm">Network Settings</a></li>
+	<li> <a href="http://192.168.1.48/Detect.htm">Detector Settings</a> </li>
+	<li class="list_bg"> <a href="http://192.168.1.48/Alert.htm">Alert Settings</a></li>
+	<li><a href="http://192.168.1.48/Zone.htm">Zone Manager  Settings</a></li>
+  </ul>
+  
+  <li> <a href="http://192.168.1.48/Mainten.htm">Device Maintenance </a></li>
+ </ul>
+</div></div>
+<div id="main_content">
+<div id="text_content">
+ <h1> Alert Settings <span style="font-size:11px; float:right; padding-top:4px;"><a href="http://192.168.1.48/Alert.htm" style="color:#FFFFFF; text-decoration:none;">Restore settings on this page</a></span></h1>
+<p>Enter the settings where prompted below. Click 'Save' to apply your changes or 'Back' to discard any changes. Hover over <span class="help"></span> for help.</p>
+</div>
+<div><div id="inner_content"><div id="inner_form">
+<table style="width:650px;">
+<form name="audio_alert" action="" class="general_setting_form" method="get"></form>
+<tbody><tr>
+  <td width="240px"><span>Audio Clip Volume, Internal Speaker: </span> </td>
+  <td><span class="text_field">Low<span style="padding-left:76px;">High</span></span><input name="Vol0" size="3" value="255" onchange="A_SLIDERS[0].f_setValue(this.value)" type="hidden">&nbsp;
+	<script>new slider(A_INIT, A_TPL);</script><div style="width:120px;height:15px;border:0; background-image:url(images/bg1.gif)" id="sl0base"><img src="Alert_files/selector.gif" style="position: relative; left: 111px; top: 0px; z-index: 1; cursor: pointer; visibility: visible;" name="sl0slider" id="sl0slider" onmousedown="return f_sliderMouseDown(0)" border="0" height="15" width="17"></div>
+  </td><td></td>
+ <td class="hp" width="30px"><a href="#" onmouseover="HIn('hVol0')" onmouseout="HOut('hVol0')"><span class="hpblock" id="hVol0"><span class="hptitle">Internal speaker volume (clips)</span><span class="hpcontent"><span class="hpsection">Move
+ the slider to adjust the internal loudspeaker volume when playing an 
+audio clip (WAV file).  Click 'Save' to effect any change.</span></span></span></a></td>
+</tr>
+<tr>
+ <td><span>Audio Clip Volume, External Jack: </span> </td>
+ <td><input name="Vol1" size="3" value="192" onchange="A_SLIDERS[1].f_setValue(this.value)" type="hidden">&nbsp;
+	<script>new slider(B_INIT, A_TPL);</script><div style="width:120px;height:15px;border:0; background-image:url(images/bg1.gif)" id="sl1base"><img src="Alert_files/selector.gif" style="position: relative; left: 84px; top: 0px; z-index: 1; cursor: pointer; visibility: visible;" name="sl1slider" id="sl1slider" onmousedown="return f_sliderMouseDown(1)" border="0" height="15" width="17"></div>
+  </td><td></td>
+ <td class="hp"><a href="#" onmouseover="HIn('hVol1')" onmouseout="HOut('hVol1')"><span class="hpblock" id="hVol1"><span class="hptitle">External jack volume (clips)</span><span class="hpcontent"><span class="hpsection">Move
+ the slider to adjust the volume delivered to the rear panel jack when 
+playing an audio clip (WAV file).  Click 'Save' to effect any change.</span></span></span></a></td>
+</tr>
+<tr>
+ <td><span>Audio Jingle Volume, Internal Speaker: </span> </td>
+ <td><input name="Vol2" size="3" value="129" onchange="A_SLIDERS[2].f_setValue(this.value)" type="hidden">&nbsp;
+	<script>new slider(C_INIT, A_TPL);</script><div style="width:120px;height:15px;border:0; background-image:url(images/bg1.gif)" id="sl2base"><img src="Alert_files/selector.gif" style="position: relative; left: 57px; top: 0px; z-index: 1; cursor: pointer; visibility: visible;" name="sl2slider" id="sl2slider" onmousedown="return f_sliderMouseDown(2)" border="0" height="15" width="17"></div>
+  </td><td></td>
+ <td class="hp"><a href="#" onmouseover="HIn('hVol2')" onmouseout="HOut('hVol2')"><span class="hpblock" id="hVol2"><span class="hptitle">Internal speaker volume (jingles)</span><span class="hpcontent"><span class="hpsection">Move
+ the slider to adjust the internal loudspeaker volume when playing a 
+jingle.  This will not affect the volume of beeps the device may 
+generate as warnings.  Click 'Save' to effect any change.</span></span></span></a></td>
+</tr>
+
+<tr>
+ <td><span>Audio Jingle Volume, External Jack: </span> </td>
+ <td><input name="Vol3" size="3" value="64" onchange="A_SLIDERS[3].f_setValue(this.value)" type="hidden">&nbsp;
+	<script>new slider(D_INIT, A_TPL);</script><div style="width:120px;height:15px;border:0; background-image:url(images/bg1.gif)" id="sl3base"><img src="Alert_files/selector.gif" style="position: relative; left: 29px; top: 0px; z-index: 1; cursor: pointer; visibility: visible;" name="sl3slider" id="sl3slider" onmousedown="return f_sliderMouseDown(3)" border="0" height="15" width="17"></div>
+  </td><td></td>
+ <td class="hp"><a href="#" onmouseover="HIn('hVol3')" onmouseout="HOut('hVol3')"><span class="hpblock" id="hVol3"><span class="hptitle">External jack volume (jingles)</span><span class="hpcontent"><span class="hpsection">Move the slider to adjust the volume delivered to the rear panel jack when playing a jingle.  Click 'Save' to effect any change.</span></span></span></a></td>
+</tr>
+<tr>
+ <td>Activate Local Mute Button: </td>
+ <td>
+  <input name="eMute" value="1" checked="checked" tabindex="1" type="radio"> On
+  <input name="eMute" value="0" tabindex="2" type="radio"> Off
+  </td><td></td>
+ <td class="hp"><a href="#" onmouseover="HIn('heMute')" onmouseout="HOut('heMute')"><span class="hpblock" id="heMute"><span class="hptitle">Activate Local Mute Button</span><span class="hpcontent"><span class="hpsection">When
+ 'On', pressing the MUTE button on the device front panel will cancel 
+any audio alert playing.  When 'Off', the button has no effect other 
+than to record an event.  This setting will not affect the use of the 
+MUTE button in confirming a factory reset.  Click 'Save' to effect any 
+change.</span></span></span></a></td>
+</tr>
+<tr>
+ <td>Minimum Time Between Audio Alerts: </td>
+ <td><input name="mAlt" size="3" maxlength="3" value="10" tabindex="3" type="text">&nbsp;sec</td><td></td>
+ <td class="hp"><a href="#" onmouseover="HIn('hmAlt')" onmouseout="HOut('hmAlt')"><span class="hpblock" id="hmAlt"><span class="hptitle">Minimum time between alerts</span><span class="hpcontent"><span class="hpsection">When
+ set to zero alerts will be played whenever they are detected.  If set 
+to '60' an alert will not be played more often than once every 60 
+seconds despite how often they might be detected. The maximum value is 
+'999' seconds. Click 'Save' to effect any change.</span></span></span></a></td>
+</tr>
+<tr>
+ <td>Duration Relay is Energised: </td>
+ <td><input name="mRly" size="5" maxlength="5" value="2000" tabindex="4" type="text">&nbsp;msec</td><td></td>
+ <td class="hp"><a href="#" onmouseover="HIn('hmRly')" onmouseout="HOut('hmRly')"><span class="hpblock" id="hmRly"><span class="hptitle">Edit relay duration</span><span class="hpcontent"><span class="hpsection">For
+ any RF detection channel for which the realy is enabled, the duration 
+for which it is energised is the value given here. The value can be 
+between 100 and 65535 msec (0.1 to 65 seconds). If the relay is 
+energised, changing the value will drop it. Click 'Save' to effect any 
+change.</span></span></span></a></td>
+</tr>
+<tr>
+ <td>Relay Inhibits RF Detection:</td>
+ <td><input name="Inh" value="1" tabindex="17" type="radio"> On
+  <input name="Inh" value="0" checked="checked" tabindex="18" type="radio"> Off
+ </td><td></td>
+ <td class="hp"><a href="#" onmouseover="HIn('hmInh')" onmouseout="HOut('hmInh')"><span class="hpblock" id="hmInh"><span class="hptitle">Relay function</span><span class="hpcontent"><span class="hpsection">When this setting is 'On' all RF detection will be inhibited whilst the relay is energised. Click 'Save' to effect any change.</span></span></span></a></td>
+</tr>
+
+<tr><td colspan="3"><hr></td></tr>
+<tr>
+ <td> Erase Audio Clips (WAV file): </td>
+ <form name="Erase" action="" method="get"></form>
+ <td><input name="aErase" value="1" type="hidden">
+ <input class="erase-all" onclick="if(confirm('Are sure you want to erase all audio clips including any shipped with the unit?')) {this.form.aErase.value='1'; document.Erase.submit();}" tabindex="6" type="button">
+  </td><td></td>
+ <td class="hp"><a href="#" onmouseover="HIn('erase1')" onmouseout="HOut('erase1')"><span class="hpblock" id="erase1"><span class="hptitle">Erase all audio clips</span><span class="hpcontent"><span class="hpsection">Up
+ to 16 audio clips can be specified up to a total duration of about 80 
+seconds, but it is not possible to erase them individually.  The only 
+way to erase a clip is to erase all the clips and re-record those that 
+are wanted.  Click 'OK' after the warning prompt to confirm with 
+immediate effect.</span></span></span></a></td>
+  
+</tr>
+<tr>
+ <td> Audio Clips Compression Method: </td>
+	<td><select name="Cmp" style="width:80px;" onchange="document.Compr.Comp.value=this.form.Cmp.value;document.Compr.submit();" tabindex="8"><option selected="selected" value="0">None</option><option value="1">+3dB</option><option value="2">+6dB</option><option value="3">+9dB</option><option value="4">+12dB</option><option value="5">+15dB</option><option value="6">+18dB</option><option value="7">+21dB</option></select>
+  </td><td></td>
+ <td class="hp"><a href="#" onmouseover="HIn('hComp')" onmouseout="HOut('hComp')"><span class="hpblock" id="hComp"><span class="hptitle">Upload an audio clips for upload</span><span class="hpcontent"><span class="hpsection">You
+ should select the desired degree of dynamic compression.  Compression 
+can make some audio files appear louder.  If in doubt select 0dB or 6dB.</span></span></span></a></td>
+</tr>
+<tr>
+ <form name="add" action="Alert.htm" method="post" enctype="multipart/form-data" onsubmit="return addSubmission (this)"></form>
+ <td> Upload Audio Clips (WAV file): </td>
+	<td><div class="fileinputs"><input class="file hidden" name="addfile" tabindex="7" type="file"><div class="ff"><div class="ff1"><input></div><div class="ff2"><img class="fi" src="Alert_files/select.gif"></div></div></div></td>
+	<td><input name="upload" class="spUpload" value="" type="submit"></td>
+ <td class="hp"><a href="#" onmouseover="HIn('select')" onmouseout="HOut('select')"><span class="hpblock" id="select"><span class="hptitle">Select an audio-clip file</span><span class="hpcontent"><span class="hpsection">To
+ add an audio clip you must first select a suitable audio source file.  
+The file MUST be in uncompressed WAV format and no more than 80 seconds 
+in play-back length.  The native format is 22050 samples per second 
+mono, but stereo and other sample rate files are acceptable.<br><br>Having
+ first selected a suitable source file you should press the upload 
+button.  The device status LED will start flashing amber to indicate the
+ file upload which may take many seconds.  Do not navigate away from 
+this page until the upload is complete.  You can test the audio clip 
+from the 'Detector Settings' page.</span></span></span></a></td>
+  
+</tr>
+</tbody></table>
+</div></div>
+<form name="Compr" action="" method="get">
+ <input name="Comp" value="" type="hidden">
+</form>
+<div id="outer">
+<table width="100%">
+<tbody><tr>
+ <td class="expired" align="center">&nbsp;</td>
+ <td class="device_status" align="center">&nbsp;</td>
+</tr>
+<tr>
+ <td align="center" width="50%"><input class="spBack" value="" onclick="window.location='index.htm'" type="button"></td>
+ <td align="center" width="50%"><input class="spSave" style="cursor:pointer;" onclick="document.audio_alert.submit();" value="" type="button"></td>
+</tr>
+</tbody></table>
+</div></div></div></div></div>
+<div style="clear:both;"></div>
+<div id="footer">
+		<p>©2007-2012 <span>Cellbusters.com</span> All rights reserved.</p>
+	</div>
+</div>
+
+
+
+
+</body></html>

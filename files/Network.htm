@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="Network_files/style.css" type="text/css">
+<script type="text/javascript" src="Network_files/mchp.js"></script>
+<script language="JavaScript" src="Network_files/slider.js"></script>
+
+<title>Network Setting</title>
+<script>
+function FieldDisable(form) {
+var truth = false;
+	if (form.nDhcp.value == "DHCP") truth = true;
+	form.myIP0.disabled = truth;
+	form.myIP1.disabled = truth;
+	form.myIP2.disabled = truth;
+	form.myIP3.disabled = truth;
+	form.myIP4.disabled = truth;
+}
+</script>
+</head>
+<body onload="FieldDisable(document.forms.nSettings);">
+<div id="wrapper">
+<div id="header">
+	<div id="logo">
+	  <img src="Network_files/cb_logo.gif">
+	</div>
+	<div id="header_text">
+		<h4> Zone Protector </h4>
+		<p>Model: CB-ZP-AMT9900</p> 
+	</div>
+	<div id="user_logo">
+	  <ul>
+		<li><a href="http://192.168.1.48/wStart.htm?wStart=1" class="spWiz"><br><span>Settings Wizard</span></a></li>
+		<li style="border:none;"><a href="http://192.168.1.48/index.htm?logout=1" class="spLogout"><br><br><br><span id="span_logout">Logout</span></a></li>
+	  </ul>	
+	</div>
+	<div style="clear:both;"></div>
+</div>
+
+<div id="content"><div style="background-color:#fff;">
+<div id="sidebar"><div id="inner_sidebar">
+ <ul>
+  <li> <a href="http://192.168.1.48/index.htm"> Device Information </a></li>
+  <li class="main_list_bg"> <a href="http://192.168.1.48/General.htm">Device Settings</a></li>
+   <ul id="sub_menu">
+	<li><a href="http://192.168.1.48/General.htm">General Settings </a></li>
+	<li class="list_bg"> <a href="http://192.168.1.48/Network.htm">Network Settings </a></li>
+	<li><a href="http://192.168.1.48/Detect.htm">Detector Settings </a> </li>
+	<li><a href="http://192.168.1.48/Alert.htm">Alert Settings </a></li>
+	<li><a href="http://192.168.1.48/Zone.htm">Zone Manager  Settings</a> </li>
+   </ul>
+  
+  <li> <a href="http://192.168.1.48/Mainten.htm">Device Maintenance </a></li>
+ </ul>
+</div></div>
+<div id="main_content"><div id="text_content">
+<h1> Network Settings <span style="font-size:11px; float:right; padding-top:4px;"><a href="http://192.168.1.48/Network.htm" style="color:#FFFFFF; text-decoration:none;">Restore settings on this page</a></span></h1>
+<p>Enter the settings where prompted below. Click 'Save' to apply your changes or 'Back' to discard any changes. Hover over <span class="help"></span> for help.</p>
+</div>
+<div id="upr_botm">
+<form name="nSettings" action="" class="network_setting_form" method="get">
+<div id="inner_content"><div id="inner_form">
+<table style="margin:0px;">
+<tbody><tr>
+  <td width="212"><span id="addressing_method">IP Addressing Method: </span></td>
+  <td width="216"><select name="nDhcp" class="audiowave3" onchange="FieldDisable(this.form);" tabindex="1"><option selected="selected" value="0">Manual </option><option value="1">DHCP</option></select>
+</td>
+  <td class="hp"><a href="#" onmouseover="HIn('dhcp')" onmouseout="HOut('dhcp')"><span class="hpblock" id="dhcp"><span class="hptitle">IP Addressing Method</span><span class="hpcontent"><span class="hpsection">Select
+ 'DHCP' (the device will acquire an IP address from your DHCP server) or
+ 'Manual' (you must enter a unique IP Address and default gateway e.g. 
+as provided by your Network Administrator).</span></span></span></a></td>
+</tr>
+<tr>
+<td title="">IP Address: </td>
+<td><input size="16" maxlength="16" value="192.168.1.48" name="myIP0" tabindex="2" type="text"></td>
+<td class="hp"><a href="#" onmouseover="HIn('IP1')" onmouseout="HOut('IP1')"><span class="hpblock" id="IP1"><span class="hptitle">Edit device IP Address</span><span class="hpcontent"><span class="hpsection">If
+ 'Manual' enter an IP address in the form xxx.xxx.xxx.xxx (e.g. 
+192.168.1.48).  If you are unsure of what IP Address to use please 
+contact your Network Administrator.</span></span></span></a></td>
+</tr>
+<tr>
+<td title="">Subnet Mask: </td>
+<td><input size="16" maxlength="16" value="255.255.255.0" name="myIP1" tabindex="2" type="text"></td>
+<td class="hp"><a href="#" onmouseover="HIn('IP2')" onmouseout="HOut('IP2')"><span class="hpblock" id="IP2"><span class="hptitle">Edit device Subnet Mask</span><span class="hpcontent"><span class="hpsection">If 'Manual' enter an IP Submask in the form xxx.xxx.xxx.xxx (e.g. 255.255.255.0).</span></span></span></a></td>
+</tr>
+<tr>
+<td title="">Default Gateway: </td>
+
+<td><input size="16" maxlength="16" value="192.168.1.1" name="myIP2" tabindex="3" type="text"></td>
+<td class="hp"><a href="#" onmouseover="HIn('IP3')" onmouseout="HOut('IP3')"><span class="hpblock" id="IP3"><span class="hptitle">Edit device Default Gateway</span><span class="hpcontent"><span class="hpsection">If
+ 'Manual' enter the IP Address of the gateway (e.g. as used by the NTP 
+feature) in the form xxx.xxx.xxx.xxx (e.g. 192.168.1.1).</span></span></span></a></td>
+</tr>
+<tr>
+<td title="">DNS Server: </td>
+
+<td><input size="16" maxlength="16" value="192.168.1.1" name="myIP3" tabindex="4" type="text"></td>
+<td class="hp"><a href="#" onmouseover="HIn('IP4')" onmouseout="HOut('IP4')"><span class="hpblock" id="IP4"><span class="hptitle">Edit primary DNS Server</span><span class="hpcontent"><span class="hpsection">If 'Manual' enter the IP Address of the first DNS server in the form xxx.xxx.xxx.xxx.</span></span></span></a></td>
+</tr>
+<tr>
+<td title="">Alternate DNS Server: </td>
+ 
+<td><input size="16" maxlength="16" value="0.0.0.0" name="myIP4" tabindex="5" type="text"></td>
+<td class="hp"><a href="#" onmouseover="HIn('IP5')" onmouseout="HOut('IP5')"><span class="hpblock" id="IP5"><span class="hptitle">Edit alternate DNS Server</span><span class="hpcontent"><span class="hpsection">If 'Manual' enter the IP Address of the second DNS server in the form xxx.xxx.xxx.xxx.</span></span></span></a>
+</td>
+</tr>
+</tbody></table>
+</div></div>
+<div id="outer">
+<table width="100%">
+<tbody><tr>
+ <td class="expired" align="center">&nbsp;</td>
+ <td class="device_status" align="center">&nbsp;</td>
+</tr>
+<tr>
+ <td align="center" width="50%"><input class="spBack" onclick="window.location='index.htm'" type="button"></td>
+ <td align="center" width="50%"><input class="spSave" onclick="document.nSettings.submit();" value="" tabindex="7" type="button"></td>
+</tr>
+</tbody></table>
+</div>
+</form>
+</div></div><div style="clear:both;"></div></div></div><div style="clear:both;"> </div>
+<div id="footer">
+		<p>©2007-2012 <span>Cellbusters.com</span> All rights reserved.</p>
+	</div>
+</div>
+
+
+
+</body></html>
