@@ -17,6 +17,7 @@ mpfs_start = 0 + FIRMWARE_HEADER_SIZE
 offset = mpfs_start + MPFS_HEADER_SIZE
 
 0.upto(31) do |i|
+  puts("Offset: 0x%08x" % offset)
   name_offset, data_offset, data_length, checksum, u1, u2, name_end, table_offset, table_length, checksum_again, u3, u4 = f[offset..-1].unpack("IIIIISIIIIIS")
   name = f[(mpfs_start + name_offset)..-1].unpack("Z*").pop
   data = f[(mpfs_start + data_offset)..(mpfs_start + data_offset + data_length - 1)]
