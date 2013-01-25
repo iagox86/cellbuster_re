@@ -10,4 +10,4 @@ var truth = false;
 }
 </script>
 </head>
-<body onload="FieldDisable(document.forms.nSettings);"> 
+<body onload="FieldDisable(document.forms.nSettings);">

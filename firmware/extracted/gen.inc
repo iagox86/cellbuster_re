@@ -19,4 +19,4 @@ if (status == "checked")
 else
 	FieldEnable();
 }
-</script>~
+</script>
