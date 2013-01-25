@@ -1,0 +1,164 @@
+~inc:head.inc~
+<title>Detector Settings</title>
+<script language="javascript" type="text/javascript">
+var A_TPL = {
+	'b_vertical' : false,
+	'b_watch': true,
+	'n_controlWidth': 170,
+	'n_controlHeight': 15,
+	'n_sliderWidth': 17,
+	'n_sliderHeight': 15,
+	'n_pathLeft' : 1,
+	'n_pathTop' : 0,
+	'n_pathLength' : 160,
+	's_imgControl': 'images/bg1.gif',
+	's_imgSlider': 'images/selector.gif',
+	'n_zIndex': 1
+}
+var A_INIT = {
+	's_form' : 0,
+	's_name': 'cSens',
+	'n_minValue' : 35,
+	'n_maxValue' : 80,
+	'n_value' : ~cSens~,
+	'n_step' : 1
+}
+</script>
+<script>
+var input = unescape(location.search);
+var patt1=/cflag=del/gi;
+var res = input.match(patt1);
+var patt2=/cflag=add/gi;
+var res1 = input.match(patt2);
+if (res != null || res1 != null) {
+	input = input.replace(/cFlag=del/i, "cFlag=");
+	input = input.replace(/cFlag=add/i, "cFlag=");
+	location.search = input;
+}
+</script>
+<style>
+#detector tr td {
+    padding-right: 7px;
+}
+</style>
+</head>
+<body>
+~inc:wrap.inc~
+<div id="content"><div style="background-color:#fff; float:left">
+<div id="sidebar"><div id="inner_sidebar">
+ <ul>
+  <li> <a href="index.htm"> Device Information </a></li>
+  <li  class="main_list_bg"> <a href="General.htm">Device Settings</a></li>
+   <ul id="sub_menu">
+	<li><a href="General.htm">General Settings </a></li>
+	<li><a href="Network.htm">Network Settings </a></li>
+	<li class="list_bg"><a href="Detect.htm">Detector Settings </a> </li>
+	<li><a href="Alert.htm">Alert Settings </a></li>
+	<li><a href="Zone.htm">Zone Manager  Settings</a> </li>
+   </ul>
+  </li>
+  <li> <a href="Mainten.htm">Device Maintenance </a></li>
+ </ul>
+</div></div>
+<div id="main_content">
+<div id="text_content"><h1> Detector Settings <span style="font-size:11px; float:right; padding-top:4px;"><a href="Detect.htm" style="color:#FFFFFF; text-decoration:none;">Restore settings on this page</a></span></h1>
+<p>Enter the settings where prompted below. Click 'Save' to apply your changes or 'Back' to discard any changes. Hover over <span class="help"></span> for help.</p>
+</div>
+<div>
+<form name="sDetect" action="" class="detector_setting_form" method="get">
+<input name="cFlag" type="hidden" value="Sav">
+<div id="inner_content"><div id="inner_form">
+<table width="100%" cellpadding="0" cellspacing="4" id="detector">
+<tr>
+ <td width="200">Detection Channel:</td>
+ <td width="178"><select name="sChan" class="audiowave2" onchange="this.form.cFlag.value='pop'; document.sDetect.submit();" tabindex="1">~sChan~</select></td>
+ <td width="145"><input name="AddButton" type="button" class="add" value=""  onclick="this.form.cFlag.value='add'; document.sDetect.submit();" tabindex="2" /></td>
+ <td width="157"><input name="DelButton" type="button" class="delete" value=""  onClick="if(confirm('Are sure you want to delete this RF detection channel?')) {this.form.cFlag.value='Del'; document.sDetect.submit();}" name="reset" tabindex="3" /></td>
+ <td class="hp"><a href="#" onmouseover="HIn('hsChan')" onmouseout="HOut('hsChan')"><span class="hpblock" id="hsChan"><span class="hptitle">Selecting an RF channel</span><span class="hpcontent"><span class="hpsection">Click the select box to list the available RF detection channels and select one to view or to edit its parameters.  Click the button 'Add' to add an RF channel with the displayed parameters - you can edit the parameters either before or after adding.  Click 'Delete' to display a warning box, then click OK to confirm the deletion of the displayed channel.</span></span></a>
+ </td>
+</tr>
+<tr>
+ <td>Channel Name:</td>
+ <td><input type="text" maxlength="17" size="17"  name="nChan" value="~nChan~" tabindex="4" /></td>
+ <td>Channel Detection: </td>
+ <td>
+  <input type="radio" name="cEn" value="1" ~cEn1~ tabindex="5" /> On
+  <input type="radio" name="cEn" value="0" ~cEn0~ tabindex="6" /> Off
+ </td>
+ <td class="hp"><a href="#" onmouseover="HIn('hnChan')" onmouseout="HOut('hnChan')"><span class="hpblock" id="hnChan"><span class="hptitle">Edit channel name</span><span class="hpcontent"><span class="hpsection">The name of the channel must be unique and should describe the RF transmission you want to target.  You can use up to 16 characters.  Use the radio buttons to enable or disable RF detection in this channel.  Click 'Save' to effect any change.</span></span></a></td>
+</tr>
+<tr>
+ <td>Detector RF Range:</td>
+ <td colspan="2">
+  <input type="text" maxlength="5" size="5"  name="Lfreq" value="~Lfreq~" tabindex="7" onchange="this.form.Hfreq.value=this.value;"/>&nbsp; <span class="text_field">&nbsp;&nbsp;to</span>&nbsp;&nbsp;&nbsp;                      
+  <input type="text" maxlength="5" size="5"  name="Hfreq" value="~Hfreq~" tabindex="8" />&nbsp;<span class="text_field"> MHz</span></td>
+ <td></td>
+ <td class="hp"><a href="#" onmouseover="HIn('freq')" onmouseout="HOut('freq')"><span class="hpblock" id="freq"><span class="hptitle">Setting the RF frequency</span><span class="hpcontent"><span class="hpsection">Set the radio-frequency range to be monitored by the channel. Each value can be between 20MHz and 6020MHz.  When you change the lower frequency (on left), the higher frequency will be set equal to it.  Now edit the higher frequency (on right) to set a range of frequencies which cannot be greater than 100MHz.  The minimum RF detection bandwidth (with both frequencies the same) is about 10MHz.  This is how it works: if you select 900 to 930 MHz the device will in fact take separate measurements at 900, 910, 920 and 930MHz.  Click 'Save' to effect any change.</span></span></a></td>
+</tr>
+<tr>
+ <td>Detection Method:</td>
+ <td><select name="nMod" class="audiowave3" tabindex="9">~nMod~</select></td>
+ <td></td><td></td>
+ <td class="hp"><a href="#" onmouseover="HIn('hnMod')" onmouseout="HOut('hnMod')"><span class="hpblock" id="hnMod"><span class="hptitle">Select detection method</span><span class="hpcontent"><span class="hpsection">For most purposes select 'RF level alone'.  The other options may help to discriminate between transmissions on the same frequency.  For example the 'GSM modulation' option looks for the 216Hz pulse repetition rate characteristic of GSM.  Click 'Save' to effect any change.</span></span></a></td>
+</tr>
+<tr>
+ <td>Sensitivity Threshold:</td>
+ <td><span class="text_field">Most<span style='float:right;padding-right:12px;'>Least</span></span>
+ <script>new slider(A_INIT, A_TPL);</script>
+ </td>
+ <td><input name="cSens" type="text" size="2" maxlength="2" value="~cSens~" onchange="A_SLIDERS[0].f_setValue(this.value)">&nbsp;&nbsp;<b>dBr</b>
+</td><td></td>
+ <td class="hp"><a href="#" onmouseover="HIn('hcSens')" onmouseout="HOut('hcSens')"><span class="hpblock" id="hcSens"><span class="hptitle">RF sensitivity threshold</span><span class="hpcontent"><span class="hpsection">Move the slider to either increase or decrease the detection sensitivity or type a value in the box.  To respond only to stronger signals move the slider to the right.  The value is calibrated in dB relative to an arbitrary origin.  Click 'Save' to effect any change.</span></span></a></td>
+</tr>
+<tr>
+ <td>Audio Alert:</td>
+ <td><select name="aSel" class="audiowave2" tabindex="10">~aSel~</select></td>
+ <td>Number of Repeats:</td>
+ <td><select name="aRep" class="audiowave3" tabindex="11">~aRep~</select></td>
+ <td class="hp"><a href="#" onmouseover="HIn('haSel')" onmouseout="HOut('haSel')"><span class="hpblock" id="haSel"><span class="hptitle">Select an Audio Alert</span><span class="hpcontent"><span class="hpsection">The device is shipped with default audio alert options: these may be edited.  Some audio alerts are recorded clips (wav files), others are 'jingles' (tone sequences). Select the number of times the sound is to be repeated per alert.  Click 'Save' to effect any change.</span></span></a></td>
+</tr>
+<tr>
+ <td>Output Audio Alert:</td>
+ <td><select name="aDes" class="audiowave2" tabindex="12">~aDes~</select></td>
+ <td></td>
+ <td></td>
+ <td class="hp"><a href="#" onmouseover="HIn('haDes')" onmouseout="HOut('haDes')"><span class="hpblock" id="haDes"><span class="hptitle">Select the Audio Destination</span><span class="hpcontent"><span class="hpsection">The audio alert can be output on the device internal loudspeaker and/or to the 3.5mm jack at the rear.  Click 'Save' to effect any change.</span></span></a></td>
+</tr>
+<tr>
+ <td>Visual Alert:</td>
+ <td><select name="vSel" class="audiowave2" tabindex="13">~vSel~</select></td>
+ <td>Number of Repeats:</td>
+ <td><select name="vRep" class="audiowave3" tabindex="14">~vRep~</select></td>
+ <td class="hp"><a href="#" onmouseover="HIn('vHlp')" onmouseout="HOut('vHlp')"><span class="hpblock" id="vHlp"><span class="hptitle">Select a Visual Alert</span><span class="hpcontent"><span class="hpsection">Instead or as well as an audio alert you can select a sequence of flashes on the high-brightness panel LED's. Select the number of times the sequence will be repeated per alert.  Click 'Save' to effect any change.</span></span></a></td>
+</tr>
+<tr>
+ <td>Energise Relay Alert:</td>
+ <td>
+  <input type="radio" name="Rly" value="1" ~Rly1~ tabindex="15" /> On
+  <input type="radio" name="Rly" value="0" ~Rly0~ tabindex="16" /> Off
+ </td>
+<td></td><td></td>
+ <td class="hp"><a href="#" onmouseover="HIn('hRly')" onmouseout="HOut('hRly')"><span class="hpblock" id="hRly"><span class="hptitle">Enable the relay output</span><span class="hpcontent"><span class="hpsection">When 'On' each RF alert will energise the relay for a preset time.  The relay has galvanomically isolated normally-open and normally-closed contacts available via the rear connector rated at 5A.  Click 'Save' to effect any change.</span></span></a>
+ </td>
+</tr>
+</table>
+</tr>
+</table>
+</div></div>
+</form>
+<div id="outer">
+<table width="100%">
+<tr>
+ <td width="33%" class="expired" align="center">~warn~</td>
+ <td width="33%"></td>
+ <td width="33%" class="device_status" align="center">~ok~</td>
+</tr>
+<tr>
+ <td width="33%" align="center"><input type="button" class="spBack" onclick="window.location='index.htm'"/></td>
+ <td width="33%" align="center"><input class="test" onclick="document.sDetect.cFlag.value='tes';document.sDetect.submit();" value="" type="button" /></td>
+ <td width="33%" align="center"><input class="spSave" onclick="document.sDetect.submit();" value="" type="button" /></td>
+</tr>
+</table>
+</div></div></div></div></div>
+<div style="clear:both;"> </div>
+~inc:foot.inc~ 
